@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Countdown</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="countdown-container">
+        <h2>How long have we been together? 💖</h2>
+        <img src="couple.jpg" alt="Couple Picture" class="profile-pic">
+        <p><strong>1 Year 8 Months</strong></p>
+        <div class="countdown">
+            <span id="days">000</span> Days :
+            <span id="hours">00</span> Hrs :
+            <span id="minutes">00</span> Mins :
+            <span id="seconds">00</span> Secs
+        </div>
+        <p>❤️ <strong>Yen & Game</strong> ❤️</p>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const startDate = new Date("2022-05-01"); // Set your relationship start date
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
