@@ -201,11 +201,11 @@
 
         function submitPassword() {
             if (passwordInput.value === CORRECT_CODE) {
-                message.textContent = 'Access Granted! My Heart is Yours 💖';
+                message.textContent = 'Access Granted!💖';
                 message.classList.add('success');
                 createConfetti();
                 setTimeout(() => {
-                    window.location.href = 'special-message.html'; // Replace with your actual page
+                    window.location.href = 'countdown/countdown.html'; // Replace with your actual page
                 }, 2000);
             } else {
                 message.textContent = 'Incorrect Code - Try Again!';
@@ -226,7 +226,7 @@
             }
         }
 
-        // Keyboard support
+        // Keyboard support angas ko hahaha
         document.addEventListener('keydown', (e) => {
             if (e.key >= '0' && e.key <= '9') enterNumber(e.key);
             if (e.key === 'Enter') submitPassword();
