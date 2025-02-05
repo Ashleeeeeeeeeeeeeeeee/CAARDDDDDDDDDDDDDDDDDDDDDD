@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: valentines-day-website
+    env: static
+    staticPublishPath: ./
+    buildCommand: ""
+    startCommand: ""
