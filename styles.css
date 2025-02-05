@@ -1,144 +1,72 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Use a modern, clean font */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #ffe6f2;
-    font-family: 'Arial', sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  line-height: 1.6;
 }
 
-.container {
-    text-align: center;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    width: 300px;
-}
-
-.password-box p {
-    font-size: 16px;
-    margin: 10px 0;
-}
-
-input {
-    width: 80%;
-    padding: 8px;
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.keypad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-
-button {
-    padding: 10px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ff4081;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background-color: #e6005c;
-}
-
-#message {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-    font-family: 'Arial', sans-serif;
-}
-
+/* Gallery Container */
 .gallery-container {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    width: 90%;
-    text-align: center;
+  text-align: center;
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-h2 {
-    color: #e91e63;
-    margin-bottom: 1.5rem;
-    font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+/* Heading Styling */
+.gallery-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
 }
 
+/* Gallery Layout */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  justify-content: center;
+  margin: 20px auto;
 }
 
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Image Styling with Enhanced Hover Effects */
 .gallery img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: 3px solid white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover Effect: Scale, Shadow & Slight Rotation */
 .gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+  transform: scale(1.1) rotate(0.5deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Message Styling */
 .message {
-    color: #e91e63;
-    font-size: 1.2em;
-    font-style: italic;
-    margin-top: 1rem;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    h2 {
-        font-size: 2em;
-    }
-}
-
-@media (max-width: 480px) {
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-    
-    .gallery img {
-        height: 250px;
-    }
+  font-size: 1.125rem; /* 18px equivalent */
+  color: #ff4081;
+  font-style: italic;
+  margin-top: 25px;
 }
