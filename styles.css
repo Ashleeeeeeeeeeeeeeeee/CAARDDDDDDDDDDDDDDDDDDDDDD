@@ -1,72 +1,59 @@
-/* Base Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Use a modern, clean font */
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #fafafa;
-  color: #333;
-  line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffe6f2;
+    font-family: 'Arial', sans-serif;
 }
 
-/* Gallery Container */
-.gallery-container {
-  text-align: center;
-  padding: 30px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
 }
 
-/* Heading Styling */
-.gallery-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #333;
+.password-box p {
+    font-size: 16px;
+    margin: 10px 0;
 }
 
-/* Gallery Layout */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  justify-content: center;
-  margin: 20px auto;
+input {
+    width: 80%;
+    padding: 8px;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
-@media (max-width: 600px) {
-  .gallery {
-    grid-template-columns: 1fr;
-  }
+button {
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff4081;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Image Styling with Enhanced Hover Effects */
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+button:hover {
+    background-color: #e6005c;
 }
 
-/* Hover Effect: Scale, Shadow & Slight Rotation */
-.gallery img:hover {
-  transform: scale(1.1) rotate(0.5deg);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Message Styling */
-.message {
-  font-size: 1.125rem; /* 18px equivalent */
-  color: #ff4081;
-  font-style: italic;
-  margin-top: 25px;
+#message {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
 }
