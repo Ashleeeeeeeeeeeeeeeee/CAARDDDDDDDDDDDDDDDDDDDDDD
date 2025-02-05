@@ -57,3 +57,31 @@ button:hover {
     font-weight: bold;
     margin-top: 10px;
 }
+.gallery-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+.message {
+    font-size: 18px;
+    color: #ff4081;
+    font-style: italic;
+}
