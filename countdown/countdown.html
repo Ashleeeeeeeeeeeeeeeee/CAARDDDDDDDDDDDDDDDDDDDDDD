@@ -1,43 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Countdown</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Love Countdown</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      padding: 20px;
+    }
+
+    .countdown-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h2 {
+      color: #e91e63;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e91e63;
+      margin: 1rem 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      margin: 1rem 0;
+      color: #333;
+      font-size: 1.2rem;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .countdown span {
+      background: #e91e63;
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      min-width: 80px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .countdown::after {
+      content: "of Love 💞";
+      width: 100;
+      font-size: 1.2rem;
+      color: #e91e63;
+      margin-top: 1rem;
+    }
+
+    strong {
+      color: #e91e63;
+      font-size: 1.3rem;
+    }
+
+    /* New styles for the clickable link */
+    a {
+      text-decoration: none;
+      color: #e91e63;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #c2185b;
+    }
+  </style>
 </head>
 <body>
-    <div class="countdown-container">
-        <h2>How long have we been together? 💖</h2>
-        <img src="couple.jpg" alt="Couple Picture" class="profile-pic">
-        <p><strong>1 Year 8 Months</strong></p>
-        <div class="countdown">
-            <span id="days">000</span> Days :
-            <span id="hours">00</span> Hrs :
-            <span id="minutes">00</span> Mins :
-            <span id="seconds">00</span> Secs
-        </div>
-        <p>❤️ <strong>Yen & Game</strong> ❤️</p>
+  <div class="countdown-container">
+    <h2>Our Love Journey 💖</h2>
+    <img src="couple.jpg" alt="Ash & Bea" class="profile-pic">
+    <p><strong>1 Year 8 Months</strong> of Happiness</p>
+    <div class="countdown">
+      <span id="days">000</span>
+      <span id="hours">00</span>
+      <span id="minutes">00</span>
+      <span id="seconds">00</span>
     </div>
+    <p>❤️ <strong><a href="gallery/gallery.html">Ash & Bea</a></strong> ❤️</p>
+  </div>
 
-    <script>
-        function updateCountdown() {
-            const startDate = new Date("2022-05-01"); // Set your relationship start date
-            const now = new Date();
-            const diff = now - startDate;
+  <script>
+    function updateCountdown() {
+      const startDate = new Date("2022-05-01");
+      const now = new Date();
+      const diff = now - startDate;
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+      const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+      const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
 
-            document.getElementById("days").textContent = days;
-            document.getElementById("hours").textContent = hours;
-            document.getElementById("minutes").textContent = minutes;
-            document.getElementById("seconds").textContent = seconds;
-        }
+      document.getElementById("days").textContent = String(days).padStart(3, '0');
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
 
-        setInterval(updateCountdown, 1000);
-    </script>
+    // Initial call to avoid initial delay
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
