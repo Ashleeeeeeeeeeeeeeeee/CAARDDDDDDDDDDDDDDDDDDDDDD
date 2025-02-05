@@ -1,0 +1,12 @@
+{
+  "name": "valentines-day-website",
+  "version": "1.0.0",
+  "description": "A fun Valentine's Day website",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve"
+  },
+  "dependencies": {
+    "serve": "^14.0.1"
+  }
+}
