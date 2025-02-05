@@ -19,7 +19,7 @@ function submitPassword() {
         document.getElementById("message").textContent = "🎉 Access Granted! 💖";
         document.getElementById("message").style.color = "green";
         setTimeout(() => {
-            window.location.href = "countdown.html"; // Redirect to countdown page
+            window.location.href = "countdown/countdown.html"; // Redirect to countdown page
         }, 2000);
     } else {
         document.getElementById("message").textContent = "❌ Wrong Password!";
