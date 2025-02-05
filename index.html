@@ -3,32 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Valentine's Secret Message</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #ff80ab;
+            --background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--background);
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transform: scale(0.9);
+            animation: scaleUp 0.5s ease forwards;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        .password-box {
+            position: relative;
+            max-width: 350px;
+        }
+
+        #passwordInput {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.5rem;
+            border: 2px solid var(--secondary-color);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+        }
+
+        #passwordInput:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(233, 30, 99, 0.2);
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .keypad button {
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            background: white;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .keypad button:hover {
+            transform: translateY(-2px);
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .keypad button:active {
+            transform: translateY(0);
+        }
+
+        #message {
+            color: var(--primary-color);
+            font-weight: bold;
+            min-height: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .success {
+            color: #4CAF50 !important;
+        }
+
+        .error {
+            color: #f44336 !important;
+            animation: shake 0.5s;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes scaleUp {
+            to { transform: scale(1); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-color);
+            animation: confettiFall 3s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h2>💖 Happy Valentine's Day 💖</h2>
+        <h2>💘 Valentine's Secret 💘</h2>
         <div class="password-box">
-            <p>Enter your special code:</p>
-            <input type="password" id="passwordInput" readonly>
+            <p>Enter Our Special Code:</p>
+            <input type="password" id="passwordInput" maxlength="4" readonly>
             <div class="keypad">
-                <button onclick="enterNumber(1)">1</button>
-                <button onclick="enterNumber(2)">2</button>
-                <button onclick="enterNumber(3)">3</button>
-                <button onclick="enterNumber(4)">4</button>
-                <button onclick="enterNumber(5)">5</button>
-                <button onclick="enterNumber(6)">6</button>
-                <button onclick="enterNumber(7)">7</button>
-                <button onclick="enterNumber(8)">8</button>
-                <button onclick="enterNumber(9)">9</button>
-                <button onclick="clearPassword()">❌</button>
-                <button onclick="enterNumber(0)">0</button>
-                <button onclick="submitPassword()">✔️</button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button onclick="clearPassword()">⌫</button>
+                <button>0</button>
+                <button onclick="submitPassword()">✓</button>
             </div>
             <p id="message"></p>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        const CORRECT_CODE = '1412';
+        const passwordInput = document.getElementById('passwordInput');
+        const message = document.getElementById('message');
+
+        document.querySelectorAll('.keypad button:not(:last-child)').forEach(button => {
+            button.addEventListener('click', () => enterNumber(button.textContent));
+        });
+
+        function enterNumber(num) {
+            if (passwordInput.value.length < 4) {
+                passwordInput.value += num;
+            }
+        }
+
+        function clearPassword() {
+            passwordInput.value = '';
+            message.classList.remove('error', 'success');
+            message.textContent = '';
+        }
+
+        function submitPassword() {
+            if (passwordInput.value === CORRECT_CODE) {
+                message.textContent = 'Access Granted! My Heart is Yours 💖';
+                message.classList.add('success');
+                createConfetti();
+                setTimeout(() => {
+                    window.location.href = 'special-message.html'; // Replace with your actual page
+                }, 2000);
+            } else {
+                message.textContent = 'Incorrect Code - Try Again!';
+                message.classList.add('error');
+                passwordInput.value = '';
+            }
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (e.key >= '0' && e.key <= '9') enterNumber(e.key);
+            if (e.key === 'Enter') submitPassword();
+            if (e.key === 'Backspace') clearPassword();
+        });
+    </script>
 </body>
 </html>
