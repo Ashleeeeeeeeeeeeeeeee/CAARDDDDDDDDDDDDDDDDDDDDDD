@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Love Countdown</title>
+  <title>Ash & Bea - Love Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #ff4d6d;
+      --secondary-color: #ff758f;
+      --text-color: #2b2b2b;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
@@ -17,103 +24,189 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background: linear-gradient(135deg, #fff5f5, #ffe6e9);
       padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .heart-bg {
+      position: absolute;
+      opacity: 0.1;
+      font-size: 2rem;
+      animation: float 6s infinite ease-in-out;
     }
 
     .countdown-container {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.98);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
       text-align: center;
-      max-width: 600px;
+      max-width: 800px;
       width: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .countdown-container:hover {
+      transform: translateY(-5px);
     }
 
     h2 {
-      color: #e91e63;
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      font-family: 'Great Vibes', cursive;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .profile-pic {
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #e91e63;
-      margin: 1rem 0;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: 4px solid var(--primary-color);
+      margin: 1.5rem 0;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
     }
 
-    p {
-      margin: 1rem 0;
-      color: #333;
-      font-size: 1.2rem;
+    .profile-pic:hover {
+      transform: scale(1.05);
+    }
+
+    .love-stats {
+      font-size: 1.4rem;
+      color: var(--text-color);
+      margin: 1.5rem 0;
+      position: relative;
+    }
+
+    .love-stats strong {
+      color: var(--primary-color);
+      font-weight: 600;
     }
 
     .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 2rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
     }
 
-    .countdown span {
-      background: #e91e63;
+    .countdown-item {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
-      padding: 1rem;
-      border-radius: 10px;
-      min-width: 80px;
-      font-size: 1.5rem;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      border-radius: 15px;
+      min-width: 120px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
-    .countdown::after {
-      content: "of Love 💞";
-      width: 100;
-      font-size: 1.2rem;
-      color: #e91e63;
-      margin-top: 1rem;
+    .countdown-item:hover {
+      transform: translateY(-5px);
     }
 
-    strong {
-      color: #e91e63;
-      font-size: 1.3rem;
+    .countdown-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-top: 0.5rem;
+      opacity: 0.9;
     }
 
-    /* New*/
-    a {
+    .couple-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       text-decoration: none;
-      color: #e91e63;
-      transition: color 0.3s ease;
+      color: var(--primary-color);
+      font-weight: 600;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      border: 2px solid var(--primary-color);
     }
 
-    a:hover {
-      color: #c2185b;
+    .couple-link:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @media (max-width: 768px) {
+      .countdown-container {
+        padding: 1.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .profile-pic {
+        width: 140px;
+        height: 140px;
+      }
+
+      .countdown-item {
+        padding: 1rem;
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Animated background hearts -->
+  <div class="heart-bg" style="top:10%; left:5%">❤️</div>
+  <div class="heart-bg" style="top:20%; right:8%">💖</div>
+  <div class="heart-bg" style="bottom:15%; left:15%">💕</div>
+
   <div class="countdown-container">
-    <h2>Our Love Journey 💖</h2>
+    <h2>Ash & Bea's Eternal Journey</h2>
     <img src="couple.jpg" alt="Ash & Bea" class="profile-pic">
-    <p><strong>1 Year 8 Months</strong> of Happiness</p>
+    <p class="love-stats">
+      <strong>1 Year 8 Months</strong> of shared memories<br>
+      <span style="font-size:0.9em; color:#666">Since May 1st, 2022</span>
+    </p>
+    
     <div class="countdown">
-      <span id="days">000</span>
-      <span id="hours">00</span>
-      <span id="minutes">00</span>
-      <span id="seconds">00</span>
+      <div class="countdown-item">
+        <span id="days">000</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-item">
+        <span id="hours">00</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-item">
+        <span id="minutes">00</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-item">
+        <span id="seconds">00</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
     </div>
-    <p>❤️ <strong><a href="gallery/gallery.html">Ash & Bea</a></strong> ❤️</p>
+
+    <a href="gallery/gallery.html" class="couple-link">
+      <span>View Our Memories</span>
+      <span>📸</span>
+    </a>
   </div>
 
   <script>
     function updateCountdown() {
-      const startDate = new Date("2022-05-01");//dito mo lagay kung gaano na kayo katagal
+      const startDate = new Date("2022-05-01");
       const now = new Date();
       const diff = now - startDate;
 
@@ -128,9 +221,29 @@
       document.getElementById("seconds").textContent = seconds;
     }
 
-    // Initial call to avoid initial delay
+    // Add initial animation class
+    document.querySelector('.countdown-container').classList.add('loaded');
+
+    // Initialize countdown
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // Add random floating hearts
+    function createFloatingHearts() {
+      const container = document.body;
+      const heart = document.createElement('div');
+      heart.className = 'heart-bg';
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.top = `${Math.random() * 100}%`;
+      heart.style.animationDelay = `${Math.random() * 2}s`;
+      heart.innerHTML = ['❤️', '💖', '💕'][Math.floor(Math.random() * 3)];
+      container.appendChild(heart);
+    }
+
+    // Create initial hearts
+    for (let i = 0; i < 8; i++) {
+      createFloatingHearts();
+    }
   </script>
 </body>
 </html>
